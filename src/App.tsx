@@ -1,10 +1,13 @@
-import React from "react";
+import "./App.css";
+
 import { Piano } from "./components";
 
 function App() {
   return (
-    <main style={{ width: "800px", height: "150px" }}>
-      <Piano />
+    <main className="App">
+      <section className="App__piano">
+        <Piano />
+      </section>
     </main>
   );
 }

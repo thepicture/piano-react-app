@@ -1,52 +1,31 @@
 import React from "react";
 
+import "./PianoKey.css";
+
 interface PianoKeyProps {
   withSemitone?: boolean;
 }
 
 export const PianoKey: React.FC<PianoKeyProps> = ({ withSemitone }) => {
   return withSemitone ? (
-    <div style={{ position: "relative" }}>
+    <div className="PianoKey__container">
       <button
+        type="button"
         title="piano key"
-        style={{
-          border: "1px solid black",
-          background: "white",
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          cursor: "pointer",
-          borderRadius: ".3em",
-        }}
+        className="PianoKey PianoKey--white"
       />
       <button
+        type="button"
         title="piano key"
-        style={{
-          border: "1px solid black",
-          background: "black",
-          position: "absolute",
-          height: "55%",
-          width: "50%",
-          left: "75%",
-          zIndex: 1,
-          cursor: "pointer",
-          borderRadius: ".3em",
-        }}
+        className="PianoKey PianoKey--black"
       />
     </div>
   ) : (
-    <div style={{ position: "relative" }}>
+    <div className="PianoKey__container">
       <button
+        type="button"
         title="piano key"
-        style={{
-          border: "1px solid black",
-          background: "white",
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          cursor: "pointer",
-          borderRadius: ".3em",
-        }}
+        className="PianoKey PianoKey--white"
       />
     </div>
   );

@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Piano.css";
+
 import { PianoKey } from ".";
 
 const OCTAVES_COUNT = 2;
@@ -12,16 +14,5 @@ export const Piano: React.FC = () => {
     const isWithSemitone = INDEXES_WITH_SEMITONE.includes(i % 7);
     keys.push(<PianoKey key={i} withSemitone={isWithSemitone} />);
   }
-  return (
-    <section
-      style={{
-        height: "inherit",
-        display: "grid",
-        gridTemplateColumns: `repeat(${7 * OCTAVES_COUNT}, auto)`,
-        cursor: "pointer",
-      }}
-    >
-      {keys}
-    </section>
-  );
+  return <div className="Piano">{keys}</div>;
 };

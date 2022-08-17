@@ -1,0 +1,6 @@
+.Piano {
+    height: inherit;
+    display: grid;
+    grid-auto-flow: column;
+    cursor: pointer;
+}
