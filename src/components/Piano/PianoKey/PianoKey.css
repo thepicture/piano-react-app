@@ -15,10 +15,26 @@
     background: white;
 }
 
+.PianoKey--white:hover {
+    background: #ddd;
+}
+
+.PianoKey--white:active {
+    background: #aaa;
+}
+
 .PianoKey--black {
     background: black;
     height: 55%;
     width: 50%;
     left: 75%;
     z-index: 1;
+}
+
+.PianoKey--black:hover {
+    background: #888;
+}
+
+.PianoKey--black:active {
+    background: #666;
 }
