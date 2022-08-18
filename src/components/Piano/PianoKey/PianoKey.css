@@ -19,7 +19,7 @@
     background: #ddd;
 }
 
-.PianoKey--white:active {
+.PianoKey--white:hover:active {
     background: #aaa;
 }
 
@@ -35,6 +35,6 @@
     background: #888;
 }
 
-.PianoKey--black:active {
+.PianoKey--black:hover:active {
     background: #666;
 }
