@@ -1,0 +1,13 @@
+.SynthesizerBody {
+    height: 100%;
+    padding: 1em;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    border-radius: .3em;
+    background-color: black;
+}
+
+.SynthesizerBody__button {
+    width: 100%;
+    height: 100%;
+}

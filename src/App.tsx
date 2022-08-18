@@ -1,12 +1,12 @@
 import "./App.css";
 
-import { Piano } from "./components";
+import { SynthesizerBody } from "./components";
 
 function App() {
   return (
     <main className="App">
-      <section className="App__piano">
-        <Piano />
+      <section className="App__synthesizer-body">
+        <SynthesizerBody />
       </section>
     </main>
   );
