@@ -20,6 +20,8 @@ export const PianoKey: React.FC<PianoKeyProps> = ({
       <button
         onMouseDown={() => onHold(cents)}
         onMouseUp={onRelease}
+        onTouchStart={() => onHold(cents)}
+        onTouchEnd={onRelease}
         onMouseLeave={onRelease}
         type="button"
         title="piano key"
@@ -29,6 +31,8 @@ export const PianoKey: React.FC<PianoKeyProps> = ({
         <button
           onMouseDown={() => onHold(cents + 100)}
           onMouseUp={onRelease}
+          onTouchStart={() => onHold(cents + 100)}
+          onTouchEnd={onRelease}
           onMouseLeave={onRelease}
           type="button"
           title="piano key"
