@@ -8,6 +8,7 @@ import { ControlPanel } from "./ControlPanel";
 export const SynthesizerBody: React.FC = () => {
   const [settings, setSettings] = useState<any>({
     volume: 1,
+    pan: 0,
   });
   const [isInitialized, setIsInitialized] = useState(false);
   const audioContext = useRef<AudioContext>();
@@ -25,9 +26,12 @@ export const SynthesizerBody: React.FC = () => {
     oscillator.current.detune.value = cents;
     const gainNode = audioContext.current.createGain();
     gainNode.gain.value = settings.volume;
-    console.log(settings.volume);
+    const panner = new StereoPannerNode(audioContext.current, {
+      pan: settings.pan,
+    });
     oscillator.current
       .connect(gainNode)
+      .connect(panner)
       .connect(audioContext.current.destination);
   };
 

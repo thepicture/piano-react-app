@@ -27,6 +27,24 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ onChange }) => {
           defaultValue={1}
         />
       </label>
+      <label htmlFor="pan">
+        Pan
+        <input
+          type="range"
+          id="pan"
+          onChange={(event) =>
+            onChange(
+              event.target.id,
+              Number.parseFloat(event.target.value) || 0
+            )
+          }
+          aria-label="stereo panner"
+          min={-1}
+          max={1}
+          step={0.01}
+          defaultValue={0}
+        />
+      </label>
     </div>
   );
 };
