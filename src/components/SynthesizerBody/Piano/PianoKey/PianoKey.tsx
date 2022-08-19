@@ -27,7 +27,11 @@ export const PianoKey: React.FC<PianoKeyProps> = ({
           }
         }}
         onTouchEnd={() => onRelease(cents)}
-        onMouseLeave={() => onRelease(cents)}
+        onMouseLeave={(event) => {
+          if (event.buttons === 1) {
+            onRelease(cents);
+          }
+        }}
         type="button"
         title="piano key"
         className="PianoKey PianoKey--white"
@@ -43,7 +47,11 @@ export const PianoKey: React.FC<PianoKeyProps> = ({
           }}
           onTouchStart={() => onHold(cents + 100)}
           onTouchEnd={() => onRelease(cents + 100)}
-          onMouseLeave={() => onRelease(cents + 100)}
+          onMouseLeave={(event) => {
+            if (event.buttons === 1) {
+              onRelease(cents + 100);
+            }
+          }}
           type="button"
           title="piano key"
           className="PianoKey PianoKey--black"
