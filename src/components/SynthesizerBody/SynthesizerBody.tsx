@@ -12,7 +12,15 @@ interface Settings {
   pan: number;
 }
 
-export const SynthesizerBody: React.FC = () => {
+interface SynthesizerBodyProps {
+  octavesCount?: number;
+  startCents?: number;
+}
+
+export const SynthesizerBody: React.FC<SynthesizerBodyProps> = ({
+  octavesCount = 2,
+  startCents = 300,
+}) => {
   const [settings, setSettings] = useState<Settings>({
     volume: 1,
     pan: 0,
@@ -74,7 +82,12 @@ export const SynthesizerBody: React.FC = () => {
   return isInitialized ? (
     <div className="SynthesizerBody">
       <ControlPanel onChange={handleChange} />
-      <Piano onHold={handleHold} onRelease={handleRelease} />
+      <Piano
+        onHold={handleHold}
+        onRelease={handleRelease}
+        octavesCount={octavesCount}
+        startCents={startCents}
+      />
     </div>
   ) : (
     <button

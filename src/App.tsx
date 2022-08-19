@@ -6,7 +6,7 @@ function App() {
   return (
     <main className="App">
       <section className="App__synthesizer-body">
-        <SynthesizerBody />
+        <SynthesizerBody octavesCount={3} />
       </section>
     </main>
   );

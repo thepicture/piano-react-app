@@ -4,8 +4,6 @@ import "./Piano.css";
 
 import { PianoKey } from ".";
 
-const OCTAVES_COUNT = 2;
-const START_CENTS = 300;
 const INDEXES_WITH_SEMITONE = [0, 1, 3, 4, 5];
 const KEYS_MAPPING = [
   "z",
@@ -25,19 +23,26 @@ const KEYS_MAPPING = [
 interface PianoProps {
   onHold: (cents: number) => void;
   onRelease: (cents: number) => void;
+  octavesCount?: number;
+  startCents?: number;
 }
 
-export const Piano: React.FC<PianoProps> = ({ onHold, onRelease }) => {
+export const Piano: React.FC<PianoProps> = ({
+  onHold,
+  onRelease,
+  octavesCount = 2,
+  startCents = 300,
+}) => {
   let keys: any[] = [];
 
-  let cents = START_CENTS;
+  let cents = startCents;
 
   useEffect(() => {
-    let keyCents = START_CENTS;
+    let keyCents = startCents;
     const keyDownListeners: any[] = [];
     const keyUpListeners: any[] = [];
 
-    for (let i = 0; i < 7 * OCTAVES_COUNT; ++i) {
+    for (let i = 0; i < 7 * octavesCount; ++i) {
       (function (index, cents) {
         const keyDownListener = (event: KeyboardEvent) => {
           if (event.repeat) {
@@ -66,7 +71,7 @@ export const Piano: React.FC<PianoProps> = ({ onHold, onRelease }) => {
     };
   }, [onHold, onRelease]);
 
-  for (let i = 0; i < 7 * OCTAVES_COUNT; ++i) {
+  for (let i = 0; i < 7 * octavesCount; ++i) {
     const isWithSemitone = INDEXES_WITH_SEMITONE.includes(i % 7);
 
     (function (cents) {
