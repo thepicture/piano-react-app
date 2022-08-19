@@ -5,6 +5,7 @@
     height: 100%;
     cursor: pointer;
     border-radius: .3em;
+    transition: all 32ms ease-in-out;
 }
 
 .PianoKey__container {
@@ -13,6 +14,7 @@
 
 .PianoKey--white {
     background: white;
+    transform: translateY(-10px);
 }
 
 .PianoKey--white:hover {
@@ -20,6 +22,7 @@
 }
 
 .PianoKey--white:hover:active {
+    transform: translateY(0px);
     background: #aaa;
 }
 
@@ -28,6 +31,7 @@
     height: 55%;
     width: 50%;
     left: 75%;
+    transform: translateY(-15px);
     z-index: 1;
 }
 
@@ -36,5 +40,6 @@
 }
 
 .PianoKey--black:hover:active {
+    transform: translateY(-10px);
     background: #666;
 }
