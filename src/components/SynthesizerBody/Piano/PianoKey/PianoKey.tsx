@@ -6,7 +6,7 @@ interface PianoKeyProps {
   withSemitone?: boolean;
   cents: number;
   onHold: (cents: number) => void;
-  onRelease: () => void;
+  onRelease: (cents: number) => void;
 }
 
 export const PianoKey: React.FC<PianoKeyProps> = ({
@@ -19,15 +19,15 @@ export const PianoKey: React.FC<PianoKeyProps> = ({
     <div className="PianoKey__container">
       <button
         onMouseDown={() => onHold(cents)}
-        onMouseUp={onRelease}
+        onMouseUp={() => onRelease(cents)}
         onTouchStart={() => onHold(cents)}
         onMouseMove={(event) => {
           if (event.buttons === 1) {
             onHold(cents);
           }
         }}
-        onTouchEnd={onRelease}
-        onMouseLeave={onRelease}
+        onTouchEnd={() => onRelease(cents)}
+        onMouseLeave={() => onRelease(cents)}
         type="button"
         title="piano key"
         className="PianoKey PianoKey--white"
@@ -35,15 +35,15 @@ export const PianoKey: React.FC<PianoKeyProps> = ({
       {withSemitone && (
         <button
           onMouseDown={() => onHold(cents + 100)}
-          onMouseUp={onRelease}
+          onMouseUp={() => onRelease(cents + 100)}
           onMouseMove={(event) => {
             if (event.buttons === 1) {
               onHold(cents + 100);
             }
           }}
           onTouchStart={() => onHold(cents + 100)}
-          onTouchEnd={onRelease}
-          onMouseLeave={onRelease}
+          onTouchEnd={() => onRelease(cents + 100)}
+          onMouseLeave={() => onRelease(cents + 100)}
           type="button"
           title="piano key"
           className="PianoKey PianoKey--black"

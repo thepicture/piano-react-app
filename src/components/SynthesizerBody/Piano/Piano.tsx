@@ -24,7 +24,7 @@ const KEYS_MAPPING = [
 
 interface PianoProps {
   onHold: (cents: number) => void;
-  onRelease: () => void;
+  onRelease: (cents: number) => void;
 }
 
 export const Piano: React.FC<PianoProps> = ({ onHold, onRelease }) => {
@@ -34,17 +34,36 @@ export const Piano: React.FC<PianoProps> = ({ onHold, onRelease }) => {
 
   useEffect(() => {
     let keyCents = START_CENTS;
+    const keyDownListeners: any[] = [];
+    const keyUpListeners: any[] = [];
 
     for (let i = 0; i < 7 * OCTAVES_COUNT; ++i) {
       (function (index, cents) {
-        document.addEventListener(
-          "keydown",
-          (event) => event.key === KEYS_MAPPING[index] && onHold(cents)
-        );
-        document.addEventListener("keyup", () => onRelease());
+        const keyDownListener = (event: KeyboardEvent) => {
+          if (event.repeat) {
+            return;
+          }
+          return event.key === KEYS_MAPPING[index] && onHold(cents);
+        };
+        const keyUpListener = (event: KeyboardEvent) => {
+          return event.key === KEYS_MAPPING[index] && onRelease(cents);
+        };
+        keyDownListeners.push(keyDownListener);
+        keyUpListeners.push(keyUpListener);
+        document.body.addEventListener("keydown", keyDownListener);
+        document.body.addEventListener("keyup", keyUpListener);
       })(i, keyCents);
       keyCents += 100;
     }
+
+    return () => {
+      keyDownListeners.forEach((listener) => {
+        document.body.removeEventListener("keydown", listener);
+      });
+      keyUpListeners.forEach((listener) => {
+        document.body.removeEventListener("keyup", listener);
+      });
+    };
   }, [onHold, onRelease]);
 
   for (let i = 0; i < 7 * OCTAVES_COUNT; ++i) {
